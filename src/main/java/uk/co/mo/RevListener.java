@@ -1,4 +1,4 @@
-package hello;
+package uk.co.mo;
 
 import org.hibernate.envers.RevisionListener;
 

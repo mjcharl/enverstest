@@ -1,9 +1,10 @@
-package hello;
+package uk.co.mo;
 
 
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="customers")
@@ -15,6 +16,9 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
+
+    @OneToMany(mappedBy="customer")
+    private Set<Order> orders;
 
     protected Customer() {
     }
@@ -38,6 +42,14 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 
     @Override
