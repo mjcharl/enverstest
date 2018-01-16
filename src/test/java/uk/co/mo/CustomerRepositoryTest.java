@@ -21,7 +21,7 @@ public class CustomerRepositoryTest {
 
         //Create a customer
         Customer customer = new Customer("Martin", "Charlesworth");
-        repository.save(customer);
+        
 
         //Create an order
         Order order = new Order();
@@ -32,6 +32,8 @@ public class CustomerRepositoryTest {
 
         Set<Order> orders = customer.getOrders();
         orders.add(order);
+
+        repository.save(customer);
 
         //Update the customer
         customer.setFirstName("Joe");
