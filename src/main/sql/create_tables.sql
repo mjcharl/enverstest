@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS orders;
       customer_id bigint not null references customers(id) on delete cascade,
       product varchar(255) not null,
       quantity integer not null,
-      price money not null
+      price numeric(8,2) not null
   );
 
   CREATE TABLE revinfo
@@ -47,6 +47,6 @@ DROP TABLE IF EXISTS orders;
       customer_id bigint,
       product varchar(255),
       quantity integer,
-      price money,
+      price numeric(8,2),
       CONSTRAINT order_aud_pkey PRIMARY KEY (id, rev)
   );

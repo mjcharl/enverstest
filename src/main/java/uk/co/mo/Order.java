@@ -4,6 +4,7 @@ package uk.co.mo;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name="orders")
@@ -15,7 +16,7 @@ public class Order {
     private Long id;
     private String product;
     private Integer quantity;
-    private Double price;
+    private BigDecimal price;
 
     @ManyToOne
     @JoinColumn(name="customer_id", nullable=false)
@@ -48,11 +49,11 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

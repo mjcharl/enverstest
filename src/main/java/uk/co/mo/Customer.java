@@ -4,6 +4,7 @@ package uk.co.mo;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,8 +18,8 @@ public class Customer {
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy="customer")
-    private Set<Order> orders;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
+    private Set<Order> orders = new HashSet<>();
 
     protected Customer() {
     }

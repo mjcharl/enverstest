@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigDecimal;
+import java.util.Set;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CustomerRepositoryTest {
@@ -20,6 +23,16 @@ public class CustomerRepositoryTest {
         Customer customer = new Customer("Martin", "Charlesworth");
         repository.save(customer);
 
+        //Create an order
+        Order order = new Order();
+        order.setCustomer(customer);
+        order.setPrice(BigDecimal.valueOf(9.99));
+        order.setProduct("Boots");
+        order.setQuantity(8);
+
+        Set<Order> orders = customer.getOrders();
+        orders.add(order);
+
         //Update the customer
         customer.setFirstName("Joe");
         customer.setLastName("Bloggs");
@@ -31,6 +44,6 @@ public class CustomerRepositoryTest {
         repository.save(customer);
 
         //Delete the customer
-        repository.delete(customer);
+        //repository.delete(customer);
     }
 }
