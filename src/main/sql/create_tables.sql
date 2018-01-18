@@ -1,52 +1,52 @@
-DROP TABLE IF EXISTS orders;
-  DROP TABLE IF EXISTS customers;
-  DROP TABLE IF EXISTS revinfo;
-  DROP TABLE IF EXISTS customers_aud;
-  DROP TABLE IF EXISTS orders_aud;
+drop table if exists orders;
+drop table if exists customers;
+drop table if exists revinfo;
+drop table if exists customers_aud;
+drop table if exists orders_aud;
 
-  CREATE TABLE customers
+  create table customers
   (
-      id bigint NOT NULL,
-      first_name varchar(255),
-      last_name varchar(255),
-      CONSTRAINT customer_pkey PRIMARY KEY (id)
+      id            bigint          not null,
+      first_name    varchar(255)    not null,
+      last_name     varchar(255)    not null,
+      constraint    customer_pkey primary key (id)
   );
 
-  CREATE TABLE orders
+  create table orders
   (
-      id bigint NOT NULL,
-      customer_id bigint not null references customers(id) on delete cascade,
-      product varchar(255) not null,
-      quantity integer not null,
-      price numeric(8,2) not null
+      id            bigint          not null,
+      customer_id   bigint          not null references customers(id) on delete cascade,
+      product       varchar(255)    not null,
+      quantity      integer         not null,
+      price         numeric(8,2)    not null
   );
 
-  CREATE TABLE revinfo
+  create table revinfo
   (
-      rev integer NOT NULL,
-      revtstmp bigint NOT NULL,
-      username varchar(255),
-      CONSTRAINT revinfo_pkey PRIMARY KEY (rev)
+      rev           integer         not null,
+      revtstmp      bigint          not null,
+      username      varchar(255),
+      constraint    revinfo_pkey primary key (rev)
   );
 
-  CREATE TABLE customers_aud
+  create table customers_aud
   (
-      id bigint NOT NULL,
-      rev integer NOT NULL,
-      revtype smallint,
-      first_name varchar(255),
-      last_name varchar(255),
-      CONSTRAINT customer_aud_pkey PRIMARY KEY (id, rev)
+      id            bigint          not null,
+      rev           integer         not null,
+      revtype       smallint,
+      first_name    varchar(255),
+      last_name     varchar(255),
+      constraint customer_aud_pkey primary key (id, rev)
   );
 
-  CREATE TABLE orders_aud
+  create table orders_aud
   (
-      id bigint NOT NULL,
-      rev integer NOT NULL,
-      revtype smallint,
-      customer_id bigint,
-      product varchar(255),
-      quantity integer,
-      price numeric(8,2),
-      CONSTRAINT order_aud_pkey PRIMARY KEY (id, rev)
+      id            bigint          not null,
+      rev           integer         not null,
+      revtype       smallint,
+      customer_id   bigint,
+      product       varchar(255),
+      quantity      integer,
+      price         numeric(8,2),
+      constraint order_aud_pkey primary key (id, rev)
   );

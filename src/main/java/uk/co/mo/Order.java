@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 @Audited
 public class Order {
 
@@ -19,7 +19,7 @@ public class Order {
     private BigDecimal price;
 
     @ManyToOne
-    @JoinColumn(name="customer_id", nullable=false)
+    @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
     protected Order() {

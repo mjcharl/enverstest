@@ -21,7 +21,7 @@ public class CustomerRepositoryTest {
 
         //Create a customer
         Customer customer = new Customer("Martin", "Charlesworth");
-        
+
 
         //Create an order
         Order order = new Order();
@@ -46,6 +46,6 @@ public class CustomerRepositoryTest {
         repository.save(customer);
 
         //Delete the customer
-        //repository.delete(customer);
+        repository.delete(customer);
     }
 }

@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="customers")
+@Table(name = "customers")
 @Audited
 public class Customer {
 
@@ -18,7 +18,7 @@ public class Customer {
     private String firstName;
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     private Set<Order> orders = new HashSet<>();
 
     protected Customer() {
@@ -51,13 +51,6 @@ public class Customer {
 
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
-    }
-
-    @Override
-    public String toString() {
-        return String.format(
-                "Customer[id=%d, firstName='%s', lastName='%s']",
-                id, firstName, lastName);
     }
 
 }
