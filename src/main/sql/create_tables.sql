@@ -3,6 +3,7 @@ drop table if exists customers;
 drop table if exists revinfo;
 drop table if exists customers_aud;
 drop table if exists orders_aud;
+drop sequence if exists hibernate_sequence;
 
   create table customers
   (
@@ -50,3 +51,5 @@ drop table if exists orders_aud;
       price         numeric(8,2),
       constraint order_aud_pkey primary key (id, rev)
   );
+
+  create sequence hibernate_sequence minvalue 300;
